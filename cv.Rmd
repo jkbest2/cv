@@ -1,0 +1,83 @@
+---
+name: John K.
+surname: Best
+position: "Graduate Research Assistant"
+address: "Quantitative Ecology & Resource Management, University of Washington"
+phone: +1 315 440 8420
+www: www.posdefecology.net
+email: "jkbest@uw.edu"
+twitter: isposdef
+github: jkbest2
+orcid: 0000-0002-8920-0900
+date: "`r format(Sys.time(), '%B %Y')`"
+output: 
+  vitae::awesomecv:
+    page_total: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+library(vitae)
+library(tibble)
+library(rorcid)
+
+myorcid <- "0000-0002-8920-0900"
+```
+
+# Education
+
+```{r}
+tribble(
+  ~ Degree, ~ Year, ~ Institution, ~ Where,
+  "BS Biology & Physics", "September 2004 - May 2008", "Clarkson University", "Potsdam, NY",
+  "MS Statistics", "August 2014 - May 2016", "University of Fairbanks", "Fairbanks, AK",
+  "PhD Quantitative Ecology & Resource Management", "August 2016 - ", "University of Washington", "Seattle, WA"
+) %>% 
+  detailed_entries(Degree, Year, Institution, Where)
+```
+
+# Publications
+
+```{r}
+bibliography_entries("works.bib") %>%
+  arrange(desc(author$family), issued)
+```
+
+# Funding
+
+```{r}
+tribble(
+  ~ Title, ~ Year, ~ Grant, ~ Amount,
+  "Improving spatiotemporal indices of abundance with fishery-dependent and -independent data", "2019 - 2022", "NMFS-Sea Grant Joint Fellowship in Population and Ecosystem Dynamics", "$120,000"
+) %>%
+  detailed_entries(Title, Year, Grant, Amount)
+```
+
+# Service
+
+- Served as peer reviewer for *Fisheries Research*, *ICES Journal of Marine
+  Sciences*, *Progress in Oceanography*, and *Aquatic Ecology*
+- Co-organizer of the 2022 University of Washington College of the Environment
+  Research Derby
+- Co-organizer of the University of Washington Department of Statistics
+  Spatiotemporal Reading Group
+
+# Talks
+
+```{r}
+tribble(
+  ~ Title, ~ Date, ~ Conference, ~ Where,
+  "Fishery-dependent data in a spatiotemporal context", "March 28, 2018", "CAPAM Spatio-temporal modelling mini-workshop", "La Jolla, CA",
+  "Standardizing spatially explicit fishery catch data", "July 5, 2018", "International Statistical Ecology Conference 2018", "St. Andrews, Scotland",
+  "Nonstationarity in spatiotemporal fisheries models", "July 30, 2018", "Joint Statistical Meeting 2018", "Vancouver, WA",
+  "Reparameterizing Bayesian state-space models for more reliable fits", "November 13, 2018", "Think Tank", "Seattle, WA",
+  "Combining Fishery-independent and -dependent observations in a single index of abundance", "October 29, 2019", "Think Tank", "Seattle, WA",
+  "Parameterizations for Bayesian state-space surplus production models", "November 14, 2019", "SAFS Graduate Student Symposium", "Seattle, WA",
+  "Catchability as a spatiotemporal random effect for standardizing fishery-dependent data", "November 12, 2020", "SAFS Graduate Student Symposium", "Seattle, WA",
+  "An index of abundance combining fishery-independent and -dependent observations allowing for spatially varying catchability", "July 16, 2021", "Statistics 2021 Canada", "Montreal, Canada (v)",
+  "An index of abundance combining fishery-independent and -dependent observations allowing for spatially varying catchability", "September 21, 2021", "World Fisheries Conference 2021", "Adelaide, Australia (v)",
+  "Spatially varying catchability for indices of abundance that include fishery-dependent data", "November 4, 2021", "SAFS Graduate Student Symposium", "Seattle, WA",
+  "Spatially varying catchability for indices of abundance that include fishery-dependent data", "December 2, 2021", "2022 Sea Grant-NMFS Fellowship Symposium", "(v)"
+) %>%
+  detailed_entries(Title, Date, Conference, Where)
+```
